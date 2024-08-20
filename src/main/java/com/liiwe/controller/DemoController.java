@@ -1,5 +1,6 @@
 package com.liiwe.controller;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,9 +23,16 @@ public class DemoController {
         this.redisTemplate = redisTemplate;
     }
 
-    @GetMapping("/{value}")
+    @GetMapping("/redis/{value}")
     public String redis(@PathVariable("value") String value){
         redisTemplate.opsForValue().setIfAbsent("test:key:"+value,value, 1000L,TimeUnit.SECONDS);
+        return "success:"+value;
+    }
+
+    @Cacheable(cacheNames = "cacheDemo", key = "'test:cache:'+#value")
+    @GetMapping("/cache/{value}")
+    public String redisCache(@PathVariable("value")String value){
+        System.out.println("caching "+value);
         return "success:"+value;
     }
 }
