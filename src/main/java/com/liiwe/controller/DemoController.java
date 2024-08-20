@@ -1,5 +1,6 @@
 package com.liiwe.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import java.util.concurrent.TimeUnit;
  */
 @RestController
 @RequestMapping("/demo")
+@Slf4j
 public class DemoController {
 
     private final StringRedisTemplate redisTemplate;
@@ -32,7 +34,7 @@ public class DemoController {
     @Cacheable(cacheNames = "cacheDemo", key = "'test:cache:'+#value")
     @GetMapping("/cache/{value}")
     public String redisCache(@PathVariable("value")String value){
-        System.out.println("caching "+value);
+        log.info("caching {}",value);
         return "success:"+value;
     }
 }
