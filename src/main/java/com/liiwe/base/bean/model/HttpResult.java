@@ -1,4 +1,4 @@
-package com.liiwe.base.model;
+package com.liiwe.base.bean.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

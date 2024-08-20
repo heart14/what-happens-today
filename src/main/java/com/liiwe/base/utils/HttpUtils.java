@@ -1,6 +1,6 @@
 package com.liiwe.base.utils;
 
-import com.liiwe.base.model.HttpResult;
+import com.liiwe.base.bean.model.HttpResult;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.config.RequestConfig;
