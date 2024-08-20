@@ -17,10 +17,9 @@ import org.springframework.stereotype.Service;
 public class DailyHotServiceImpl implements DailyHotService {
 
     @Override
-    public DailyHot dailyHot() throws Exception {
-        HttpResult httpResult = HttpUtils.get("http://110.40.192.87:9001/weibo?cache=false&limit=50", null);
-        log.info("httpResult: {}", httpResult);
+    public DailyHot dailyHot(String name) throws Exception {
+        HttpResult httpResult = HttpUtils.get("http://110.40.192.87:9001/" + name + "?cache=false&limit=50", null);
+        log.info("{} httpResult: {}", name, httpResult);
         return JSONObject.parseObject(httpResult.getHttpResult(), DailyHot.class);
     }
-
 }

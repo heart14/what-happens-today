@@ -8,5 +8,5 @@ import com.liiwe.base.bean.model.DailyHot;
  */
 public interface DailyHotService {
 
-    DailyHot dailyHot() throws Exception;
+    DailyHot dailyHot(String name) throws Exception;
 }

@@ -4,6 +4,7 @@ import com.liiwe.base.bean.model.DailyHot;
 import com.liiwe.service.DailyHotService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,10 +25,11 @@ public class DailyHotController {
 
     /**
      * 当前热点话题
+     *
      * @return
      */
-    @GetMapping("/current")
-    public DailyHot current() throws Exception{
-        return dailyHotService.dailyHot();
+    @GetMapping("/current/{name}")
+    public DailyHot current(@PathVariable("name") String name) throws Exception {
+        return dailyHotService.dailyHot(name);
     }
 }
