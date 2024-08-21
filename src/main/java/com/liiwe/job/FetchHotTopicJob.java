@@ -7,7 +7,6 @@ import com.liiwe.base.enums.PlatformEnums;
 import com.liiwe.service.DailyHotService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +21,6 @@ import java.util.stream.Stream;
  * @author wfli
  * @since 2024/8/20 16:19
  */
-@EnableScheduling
 @Slf4j
 @Component
 public class FetchHotTopicJob {
