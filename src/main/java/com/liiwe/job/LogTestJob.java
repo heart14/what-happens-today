@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class LogTestJob {
 
-    @Scheduled(cron = "* * * * * *")
+//    @Scheduled(cron = "* * * * * *")
     public void logTest(){
         System.out.println("--------");
         log.trace(" demo log TRACE");
