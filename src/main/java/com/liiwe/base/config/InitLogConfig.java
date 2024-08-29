@@ -18,7 +18,7 @@ public class InitLogConfig {
     public void initLogConfig(){
         // 比如在spring boot应用启动时，读取数据库，获取当前持久化的log配置
         // 假如当前保存在数据库里的日志级别是ALL
-        String level = "ALL";
+        String level = "INFO";
 
         // 获取日志记录器
         LoggerContext context = (LoggerContext) LoggerFactory.getILoggerFactory();
