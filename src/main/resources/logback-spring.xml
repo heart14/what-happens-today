@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <!-- 加载自定义配置文件 -->
+    <property resource="logback.properties"/>
+
+    <!-- 定义日志输出到控制台的 Appender -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd' 'HH:mm:ss.SSS} %green(%-5p) %magenta(${PID:- }) --- [%15t] %cyan(%-48C{48}%4L) : %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 定义日志输出到文件的 Appender -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${PATTERN}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/info-%d{yyyyMMdd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- 根 Logger 配置 -->
+    <root level="DEBUG">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </root>
+
+    <!-- 其他 Logger 配置 -->
+</configuration>
