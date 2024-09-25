@@ -15,17 +15,17 @@ import java.util.concurrent.TimeUnit;
  * @since 2024/8/19 23:59
  */
 @RestController
-@RequestMapping("/demo")
+@RequestMapping("/redis")
 @Slf4j
-public class DemoController {
+public class RedisTestController {
 
     private final StringRedisTemplate redisTemplate;
 
-    public DemoController(StringRedisTemplate redisTemplate) {
+    public RedisTestController(StringRedisTemplate redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
 
-    @GetMapping("/redis/{value}")
+    @GetMapping("/set/{value}")
     public String redis(@PathVariable("value") String value){
         redisTemplate.opsForValue().setIfAbsent("test:key:"+value,value, 1000L,TimeUnit.SECONDS);
         return "success:"+value;
